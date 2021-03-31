@@ -110,7 +110,7 @@ summary.lm(model.3)
 ```
   
 The line equation is SIMS = -5.4 + 0.04 * ARM + 0.02 * GRIP.
-The model suggests that r-squared is 0.536 and another metric, the residual standard error, is 1.144.
+The model suggests that r-squared is 0.536 and another metric, the residual standard error, is 1.144. This model is better than the previous two, because its residual standard error is smaller and the adjusted r-squared is bigger than both.
   
 ### Prediction
   
@@ -123,4 +123,28 @@ predict(model.3, new, interval = "prediction", level = .95)
 ```
   
 # Compare Model1 with Model3
+  
+### ANOVA
+  
+### Model1 vs Model2
+```{r}
+anova(model.1,model.2)
+```
+  
+ANOVA didn't work this time, because Model 1 and Model 2 are not nested models.  
+  
+### Model1 vs Model3
+```{r}
+anova(model.1,model.3)
+```
+
+The p-value, which is 0.000004, is very low. So, that means there is a significant difference between the two models. That difference is 29.45. Model 2, with ARM and GRIP, is better than the model with just ARM.
+
+### Model2 vs Model3 
+  
+```{r}
+anova(model.2,model.3)
+```  
+  
+The p-value is smaller than the previous and is very significant. The difference between the two models is 54, yet another significant result. 
   
