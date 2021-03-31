@@ -26,20 +26,77 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
   
 # SIMS~ARM
   
-### ggplot 
+### Scatterplot
 ```{r}
 basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
 ``` 
   
-### Scatterplot
 ```{r}
 basicNN + geom_point() + geom_smooth(method=lm)
 ```
   
+### Numerical results
+
+```{r}
+cor(SIMS~ARM,data=data)
+```
+  
+### Linear Model
+  
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+  
+The line equation is SIMS = -4.1 + 0.05 * ARM.
+The model suggests that r-squared is .467 and another metric, the residual standard error, is 1.226.
+  
+### Prediction
+  
+```{r}
+new <- data.frame(ARM = 88, GRIP = 94)
+```
+  
+```{r}
+predict(model.1, new, interval = "prediction", level = .95)
+```
   
 # SIMS~GRIP
   
+### Scatterplot
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=GRIP))
+``` 
+  
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+  
+### Numerical results
+
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+  
+### Linear Model
+  
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```
+  
+The line equation is SIMS = -4.81 + 0.05 * GRIP.
+The model suggests that r-squared is .405 and another metric, the residual standard error, is 1.295.   
+  
+### Prediction
+  
+```{r}
+predict(model.2, new, interval = "prediction", level = .95)
+```
+  
 # SIMS~ARM+GRIP
+  
+
   
 # Compare Model1 with Model3
   
