@@ -96,7 +96,31 @@ predict(model.2, new, interval = "prediction", level = .95)
   
 # SIMS~ARM+GRIP
   
+### Numerical results
 
+```{r}
+cor(SIMS~ARM+GRIP,data=data)
+```
+  
+### Linear Model
+  
+```{r}
+model.3 <- lm(SIMS~ARM+GRIP,data=data)
+summary.lm(model.3)
+```
+  
+The line equation is SIMS = -5.4 + 0.04 * ARM + 0.02 * GRIP.
+The model suggests that r-squared is 0.536 and another metric, the residual standard error, is 1.144.
+  
+### Prediction
+  
+```{r}
+new <- data.frame(ARM = 88, GRIP = 94)
+```
+  
+```{r}
+predict(model.3, new, interval = "prediction", level = .95)
+```
   
 # Compare Model1 with Model3
   
