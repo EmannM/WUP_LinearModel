@@ -1,0 +1,45 @@
+---
+title: "WUP_Linear Model with Prediction"
+author: "Emann Malik"
+date: "Spring 2021"
+output: 
+  html_document:
+    number_sections: true
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+require(tidyverse)
+require(tigerstats)
+require(rgl)
+require(knitr)
+if(!require("rglwidget")) {install.packages("rglwidget");require("rglwidget")}
+```
+  
+```{r}
+data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE) 
+```
+  
+# SIMS~ARM
+  
+### ggplot 
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+``` 
+  
+### Scatterplot
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+  
+  
+# SIMS~GRIP
+  
+# SIMS~ARM+GRIP
+  
+# Compare Model1 with Model3
+  
